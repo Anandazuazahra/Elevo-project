@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevo Studioo - Secret CMS Dashboard (/mieayam)</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #040711;
+        }
+
+        .admin-login-screen {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 9999;
+            background: #060B1E;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: #0D1636;
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        .login-card h2 {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+
+        .login-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #CBD5E1;
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            background: #060B1E;
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            color: #FFF;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: border-color 0.25s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-cyan);
+        }
+
+        textarea.form-control {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .admin-header {
+            background: rgba(13, 22, 54, 0.95);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 16px 0;
+        }
+
+        .admin-header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .admin-nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin: 30px 0;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 12px;
+            overflow-x: auto;
+        }
+
+        .admin-tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            color: var(--text-secondary);
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .admin-tab-btn:hover, .admin-tab-btn.active {
+            background: var(--primary-cyan);
+            color: #060B1E;
+            border-color: var(--primary-cyan);
+        }
+
+        .admin-panel-card {
+            background: #0D1636;
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .admin-panel-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .item-list-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .item-list-table th, .item-list-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-glass);
+            font-size: 0.9rem;
+        }
+
+        .item-list-table th {
+            color: var(--primary-cyan);
+            font-family: var(--font-heading);
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-edit {
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--primary-cyan);
+            border: 1px solid var(--border-glow);
+            padding: 4px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+        }
+
+        .btn-delete {
+            background: rgba(220, 38, 38, 0.15);
+            color: #FF4D4D;
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            padding: 4px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+        }
+
+        .toast-notification {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            background: var(--accent-green);
+            color: #FFF;
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(0, 200, 83, 0.4);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 10000;
+        }
+
+        .toast-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Admin Password Login Modal -->
+    <div class="admin-login-screen" id="loginScreen">
+        <div class="login-card">
+            <div class="logo-icon" style="margin: 0 auto 15px auto;">
+                <span class="logo-text-v">V</span>
+                <span class="logo-text-e">e</span>
+            </div>
+            <h2>Elevo Studioo CMS 🍜</h2>
+            <p>Admin Secret Dashboard (/mieayam)</p>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="adminPass">Password Admin</label>
+                    <input type="password" id="adminPass" class="form-control" placeholder="Default: elevo123" required>
+                </div>
+                <div id="loginError" style="color: #FF4D4D; font-size: 0.85rem; margin-bottom: 15px; display: none;">
+                    Password salah! (Default: elevo123)
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fa-solid fa-bowl-food"></i> Masuk Dashboard /mieayam
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard Top Header -->
+    <header class="admin-header">
+        <div class="container admin-header-flex">
+            <div class="brand-logo">
+                <div class="logo-icon">
+                    <span class="logo-text-v">V</span>
+                    <span class="logo-text-e">e</span>
+                </div>
+                <div class="brand-name">
+                    Elevo <span>CMS /mieayam</span>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 12px;">
+                <a href="index.html" target="_blank" class="btn btn-sm btn-outline">
+                    <i class="fa-solid fa-external-link"></i> Lihat Website Live
+                </a>
+                <button type="button" class="btn btn-sm btn-outline" id="logoutBtn" style="border-color: #FF4D4D; color: #FF4D4D;">
+                    <i class="fa-solid fa-power-off"></i> Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Admin Container -->
+    <main class="container">
+        <!-- Navigation Tabs -->
+        <div class="admin-nav-tabs">
+            <button type="button" class="admin-tab-btn active" data-tab="general">
+                <i class="fa-solid fa-gear"></i> Pengaturan Umum
+            </button>
+            <button type="button" class="admin-tab-btn" data-tab="portfolio">
+                <i class="fa-solid fa-folder-open"></i> Kelola Portofolio
+            </button>
+            <button type="button" class="admin-tab-btn" data-tab="pricing">
+                <i class="fa-solid fa-tag"></i> Kelola Paket Harga
+            </button>
+            <button type="button" class="admin-tab-btn" data-tab="faq">
+                <i class="fa-solid fa-circle-question"></i> Kelola FAQ
+            </button>
+            <button type="button" class="admin-tab-btn" data-tab="backup">
+                <i class="fa-solid fa-database"></i> Backup & Reset
+            </button>
+        </div>
+
+        <!-- TAB 1: GENERAL SETTINGS -->
+        <div class="tab-content" id="tab-general">
+            <div class="admin-panel-card">
+                <div class="admin-panel-title">
+                    <span><i class="fa-solid fa-sliders"></i> Informasi Utama & Whatsapp</span>
+                </div>
+                <form id="formGeneral">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                        <div class="form-group">
+                            <label for="inputWa">Nomor WhatsApp Studio (Format: 628xxxxxxxx)</label>
+                            <input type="text" id="inputWa" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputIg">Instagram Handle</label>
+                            <input type="text" id="inputIg" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputFb">Facebook Page Name</label>
+                            <input type="text" id="inputFb" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPromoBanner">Teks Banner Top Promo</label>
+                        <input type="text" id="inputPromoBanner" class="form-control">
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                        <div class="form-group">
+                            <label for="inputHeroTitlePrefix">Judul Hero Awalan</label>
+                            <input type="text" id="inputHeroTitlePrefix" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputHeroTitleHighlight">Judul Hero Cyan Highlight</label>
+                            <input type="text" id="inputHeroTitleHighlight" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputHeroSub">Deskripsi Subtitle Hero</label>
+                        <textarea id="inputHeroSub" class="form-control"></textarea>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                        <div class="form-group">
+                            <label for="inputOldPrice">Harga Coret (Sebelum Diskon)</label>
+                            <input type="text" id="inputOldPrice" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPromoPrice">Harga Promo Utama</label>
+                            <input type="text" id="inputPromoPrice" class="form-control">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="margin-top: 10px;">
+                        <i class="fa-solid fa-floppy-disk"></i> Simpan Pengaturan Umum
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB 2: PORTFOLIO MANAGEMENT -->
+        <div class="tab-content" id="tab-portfolio" style="display: none;">
+            <div class="admin-panel-card">
+                <div class="admin-panel-title">
+                    <span><i class="fa-solid fa-briefcase"></i> Daftar Portofolio Studio</span>
+                    <button type="button" class="btn btn-sm btn-primary" id="addPortBtn">
+                        <i class="fa-solid fa-plus"></i> Tambah Proyek
+                    </button>
+                </div>
+
+                <table class="item-list-table">
+                    <thead>
+                        <tr>
+                            <th>Judul Proyek</th>
+                            <th>Kategori</th>
+                            <th>Sektor Bisnis</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="portfolioTableBody">
+                        <!-- Rendered via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB 3: PRICING MANAGEMENT -->
+        <div class="tab-content" id="tab-pricing" style="display: none;">
+            <div class="admin-panel-card">
+                <div class="admin-panel-title">
+                    <span><i class="fa-solid fa-tags"></i> Kelola Paket Harga</span>
+                </div>
+                <div id="pricingFormList">
+                    <!-- Rendered via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: FAQ MANAGEMENT -->
+        <div class="tab-content" id="tab-faq" style="display: none;">
+            <div class="admin-panel-card">
+                <div class="admin-panel-title">
+                    <span><i class="fa-solid fa-circle-question"></i> Kelola FAQ</span>
+                    <button type="button" class="btn btn-sm btn-primary" id="addFaqBtn">
+                        <i class="fa-solid fa-plus"></i> Tambah FAQ
+                    </button>
+                </div>
+
+                <table class="item-list-table">
+                    <thead>
+                        <tr>
+                            <th>Pertanyaan</th>
+                            <th>Jawaban</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="faqTableBody">
+                        <!-- Rendered via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB 5: BACKUP & RESET -->
+        <div class="tab-content" id="tab-backup" style="display: none;">
+            <div class="admin-panel-card">
+                <div class="admin-panel-title">
+                    <span><i class="fa-solid fa-database"></i> Backup & Reset Data CMS</span>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 0.95rem;">
+                    Anda dapat mengunduh seluruh data konfigurasi website dalam bentuk JSON atau mereset data kembali ke bawaan pabrik.
+                </p>
+
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <button type="button" class="btn btn-primary" id="exportBtn">
+                        <i class="fa-solid fa-download"></i> Export JSON Data
+                    </button>
+                    <button type="button" class="btn btn-outline" id="importBtn">
+                        <i class="fa-solid fa-upload"></i> Import JSON Data
+                    </button>
+                    <input type="file" id="importFileInput" accept=".json" style="display: none;">
+                    
+                    <button type="button" class="btn btn-outline" id="resetDataBtn" style="border-color: #FF4D4D; color: #FF4D4D;">
+                        <i class="fa-solid fa-rotate"></i> Reset to Default
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Form for Add/Edit Portfolio -->
+    <div class="modal" id="portModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="portModalTitle">Tambah Proyek</h3>
+                <button type="button" class="modal-close" id="portModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="portForm">
+                    <input type="hidden" id="portId">
+                    <div class="form-group">
+                        <label for="portTitle">Judul Proyek</label>
+                        <input type="text" id="portTitle" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="portCategory">Kategori Filter</label>
+                        <select id="portCategory" class="form-control">
+                            <option value="landing">Landing Page</option>
+                            <option value="company">Company Profile</option>
+                            <option value="ecom">Toko Online</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="portNiche">Sektor Bisnis (Label Tag)</label>
+                        <input type="text" id="portNiche" class="form-control" placeholder="Contoh: CAFE & RESTO" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="portDesc">Deskripsi Ringkas</label>
+                        <textarea id="portDesc" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Simpan Proyek</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Form for Add/Edit FAQ -->
+    <div class="modal" id="faqModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="faqModalTitle">Tambah FAQ</h3>
+                <button type="button" class="modal-close" id="faqModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="faqForm">
+                    <input type="hidden" id="faqId">
+                    <div class="form-group">
+                        <label for="faqQuestion">Pertanyaan</label>
+                        <input type="text" id="faqQuestion" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="faqAnswer">Jawaban</label>
+                        <textarea id="faqAnswer" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Simpan FAQ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toast">
+        <i class="fa-solid fa-circle-check"></i> Data Berhasil Disimpan!
+    </div>
+
+    <!-- Custom Scripts -->
+    <script src="data.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
