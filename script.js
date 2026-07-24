@@ -21,7 +21,7 @@ function renderCMSContent(data) {
 
     // Render General Settings
     const { general, stats, portfolio, pricing, faq } = data;
-    const waNum = general.whatsappNumber || "6281234567890";
+    const waNum = general.whatsappNumber || "62895634887437";
 
     // Top Banner
     const promoBannerSpan = document.querySelector('.promo-banner span');
@@ -87,7 +87,7 @@ function renderCMSContent(data) {
                 <div class="portfolio-img ${p.bgClass || 'portfolio-bg-1'}">
                     <span class="portfolio-tag">${(p.niche || 'WEBSITE').toUpperCase()}</span>
                     <div class="portfolio-overlay">
-                        <button type="button" class="btn btn-sm btn-outline portfolio-detail-btn" data-title="${p.title}" data-desc="${p.desc}" data-niche="${p.niche}">
+                        <button type="button" class="btn btn-sm btn-outline portfolio-detail-btn" data-title="${p.title}" data-desc="${p.desc}" data-niche="${p.niche}" data-demo-url="${p.demoUrl || ''}">
                             <i class="fa-solid fa-eye"></i> Lihat Detail
                         </button>
                     </div>
@@ -186,7 +186,7 @@ function setupPortfolioModal() {
     const modalClose = document.getElementById('modalClose');
 
     const cmsData = getElevoData();
-    const waNum = (cmsData.general && cmsData.general.whatsappNumber) ? cmsData.general.whatsappNumber : "6281234567890";
+    const waNum = (cmsData.general && cmsData.general.whatsappNumber) ? cmsData.general.whatsappNumber : "62895634887437";
 
     document.addEventListener('click', (e) => {
         const btn = e.target.closest('.portfolio-detail-btn');
@@ -195,12 +195,23 @@ function setupPortfolioModal() {
             const title = btn.getAttribute('data-title');
             const desc = btn.getAttribute('data-desc');
             const niche = btn.getAttribute('data-niche');
+            const demoUrl = btn.getAttribute('data-demo-url');
 
             if (modalTitle) modalTitle.textContent = title;
             if (modalDesc) modalDesc.textContent = desc;
             if (modalNiche) modalNiche.textContent = niche;
             if (modalWaBtn) {
                 modalWaBtn.href = `https://wa.me/${waNum}?text=Halo%20Elevo%20Studioo,%20saya%20tertarik%20dengan%20sampel%20website%20${encodeURIComponent(title)}`;
+            }
+
+            const modalDemoBtn = document.getElementById('modalDemoBtn');
+            if (modalDemoBtn) {
+                if (demoUrl && demoUrl.trim() !== '') {
+                    modalDemoBtn.href = demoUrl;
+                    modalDemoBtn.style.display = 'inline-flex';
+                } else {
+                    modalDemoBtn.style.display = 'none';
+                }
             }
 
             if (modal) {

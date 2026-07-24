@@ -105,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: document.getElementById('portTitle').value.trim(),
             category: document.getElementById('portCategory').value,
             niche: document.getElementById('portNiche').value.trim(),
+            demoUrl: document.getElementById('portDemoUrl').value.trim(),
             desc: document.getElementById('portDesc').value.trim(),
             bgClass: `portfolio-bg-${Math.floor(Math.random() * 3) + 1}`
         };
@@ -257,6 +258,7 @@ function editPortfolio(id) {
         document.getElementById('portTitle').value = item.title;
         document.getElementById('portCategory').value = item.category;
         document.getElementById('portNiche').value = item.niche;
+        document.getElementById('portDemoUrl').value = item.demoUrl || '';
         document.getElementById('portDesc').value = item.desc;
         document.getElementById('portModal').classList.add('active');
     }

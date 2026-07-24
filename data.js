@@ -5,7 +5,7 @@
 
 const DEFAULT_ELEVO_DATA = {
     general: {
-        whatsappNumber: "6281234567890",
+
         instagramHandle: "@elevo.studioo",
         facebookHandle: "Elevo Studioo",
         promoBannerText: "🔥 LIMITED OFFER! Promo Pembuatan Website Mulai Rp 1.000.000 (Diskon Rp 200.000)",
@@ -24,10 +24,11 @@ const DEFAULT_ELEVO_DATA = {
     portfolio: [
         {
             id: "port-1",
-            title: "Warkop 1001cc POS & Menu",
+            title: "landing page cafe",
             category: "landing",
             niche: "Cafe & Resto",
             desc: "Website Landing Page & POS Cafe kekinian dengan integrasi pemesanan menu online dan manajemen kasir.",
+            demoUrl: "https://warkop-1001cc.vercel.app",
             bgClass: "portfolio-bg-1"
         },
         {
@@ -36,6 +37,7 @@ const DEFAULT_ELEVO_DATA = {
             category: "company",
             niche: "Properti & Konstruksi",
             desc: "Company Profile profesional untuk perusahaan kontraktor & properti lengkap dengan galeri proyek dan form penawaran.",
+            demoUrl: "",
             bgClass: "portfolio-bg-2"
         },
         {
@@ -44,6 +46,7 @@ const DEFAULT_ELEVO_DATA = {
             category: "ecom",
             niche: "Fashion & Retail",
             desc: "Toko online katalog busana muslimah dengan fitur direct checkout WhatsApp dan manajemen produk.",
+            demoUrl: "",
             bgClass: "portfolio-bg-3"
         }
     ],
