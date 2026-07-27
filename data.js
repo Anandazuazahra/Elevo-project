@@ -28,7 +28,7 @@ const DEFAULT_ELEVO_DATA = {
             category: "landing",
             niche: "Cafe & Resto",
             desc: "Website Landing Page & POS Cafe kekinian dengan integrasi pemesanan menu online dan manajemen kasir.",
-            demoUrl: "https://warkop-1001cc.vercel.app",
+            demoUrl: "https://lp-warkop1001cc.vercel.app/",
             bgClass: "portfolio-bg-1"
         },
         {
