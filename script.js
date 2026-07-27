@@ -308,20 +308,21 @@ function setupPortfolioModal() {
 }
 
 function setupFAQAccordion() {
-    document.addEventListener('click', (e) => {
-        const questionBtn = e.target.closest('.faq-question');
-        if (questionBtn) {
-            const item = questionBtn.closest('.faq-item');
-            const isActive = item.classList.contains('active');
-
-            if (isActive) {
-                item.classList.remove('active');
-                questionBtn.setAttribute('aria-expanded', 'false');
-            } else {
-                item.classList.add('active');
-                questionBtn.setAttribute('aria-expanded', 'true');
+    const questions = document.querySelectorAll('.faq-question');
+    questions.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('.faq-item');
+            if (item) {
+                const isActive = item.classList.contains('active');
+                if (isActive) {
+                    item.classList.remove('active');
+                    btn.setAttribute('aria-expanded', 'false');
+                } else {
+                    item.classList.add('active');
+                    btn.setAttribute('aria-expanded', 'true');
+                }
             }
-        }
+        });
     });
 }
 
