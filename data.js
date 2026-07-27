@@ -32,24 +32,6 @@ const DEFAULT_ELEVO_DATA = {
             bgClass: "portfolio-bg-1"
         },
         {
-            id: "port-2",
-            title: "Nusantara Construction",
-            category: "company",
-            niche: "Properti & Konstruksi",
-            desc: "Company Profile profesional untuk perusahaan kontraktor & properti lengkap dengan galeri proyek dan form penawaran.",
-            demoUrl: "",
-            bgClass: "portfolio-bg-2"
-        },
-        {
-            id: "port-3",
-            title: "Hijab & Fashion Store",
-            category: "ecom",
-            niche: "Fashion & Retail",
-            desc: "Toko online katalog busana muslimah dengan fitur direct checkout WhatsApp dan manajemen produk.",
-            demoUrl: "",
-            bgClass: "portfolio-bg-3"
-        },
-        {
             id: "port-4",
             title: "Dealer Motor Motoverse",
             category: "landing",
@@ -164,6 +146,21 @@ function getElevoData() {
                 data.portfolio = [...DEFAULT_ELEVO_DATA.portfolio];
                 updated = true;
             } else {
+                const defaultIds = DEFAULT_ELEVO_DATA.portfolio.map(p => p.id);
+                const allKnownDefaults = ['port-1', 'port-2', 'port-3', 'port-4', 'port-5'];
+                
+                // Filter out default items that are no longer in DEFAULT_ELEVO_DATA
+                const originalLength = data.portfolio.length;
+                data.portfolio = data.portfolio.filter(p => {
+                    if (allKnownDefaults.includes(p.id)) {
+                        return defaultIds.includes(p.id);
+                    }
+                    return true;
+                });
+                if (data.portfolio.length !== originalLength) {
+                    updated = true;
+                }
+
                 DEFAULT_ELEVO_DATA.portfolio.forEach(defaultItem => {
                     const existingIdx = data.portfolio.findIndex(p => p.id === defaultItem.id);
                     if (existingIdx === -1) {
