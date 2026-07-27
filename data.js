@@ -16,7 +16,7 @@ const DEFAULT_ELEVO_DATA = {
         promoPrice: "Rp 1.000.000"
     },
     stats: [
-        { number: "50+", label: "Website Diselesaikan" },
+        { number: "8+", label: "Website Diselesaikan" },
         { number: "100%", label: "Klien Puas & Garansi" },
         { number: "2-4 Hari", label: "Rata-rata Pengerjaan" },
         { number: "24/7", label: "Support Konsultasi" }
