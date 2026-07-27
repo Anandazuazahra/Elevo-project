@@ -314,13 +314,10 @@ function setupFAQAccordion() {
             const item = questionBtn.closest('.faq-item');
             const isActive = item.classList.contains('active');
 
-            document.querySelectorAll('.faq-item').forEach(i => {
-                i.classList.remove('active');
-                const btn = i.querySelector('.faq-question');
-                if (btn) btn.setAttribute('aria-expanded', 'false');
-            });
-
-            if (!isActive) {
+            if (isActive) {
+                item.classList.remove('active');
+                questionBtn.setAttribute('aria-expanded', 'false');
+            } else {
                 item.classList.add('active');
                 questionBtn.setAttribute('aria-expanded', 'true');
             }
