@@ -82,22 +82,45 @@ function renderCMSContent(data) {
     // Render Portfolio Showcase
     const portfolioGrid = document.querySelector('.portfolio-grid');
     if (portfolioGrid && portfolio && portfolio.length > 0) {
-        portfolioGrid.innerHTML = portfolio.map(p => `
-            <div class="portfolio-card" data-category="${p.category || 'landing'}">
-                <div class="portfolio-img ${p.bgClass || 'portfolio-bg-1'}">
-                    <span class="portfolio-tag">${(p.niche || 'WEBSITE').toUpperCase()}</span>
-                    <div class="portfolio-overlay">
-                        <button type="button" class="btn btn-sm btn-outline portfolio-detail-btn" data-title="${p.title}" data-desc="${p.desc}" data-niche="${p.niche}" data-demo-url="${p.demoUrl || ''}">
-                            <i class="fa-solid fa-eye"></i> Lihat Detail
-                        </button>
+        portfolioGrid.innerHTML = portfolio.map(p => {
+            const ytId = getYouTubeId(p.demoUrl);
+            let visualMediaHTML = '';
+
+            if (ytId) {
+                visualMediaHTML = `
+                    <div class="portfolio-video-wrapper" style="position: relative; width: 100%; padding-bottom: 75%; height: 0; overflow: hidden; border-radius: var(--radius-md); background: #000; border: 1px solid var(--border-glow); box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+                        <iframe src="https://www.youtube.com/embed/${ytId}" 
+                            title="${p.title}" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen 
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">
+                        </iframe>
+                    </div>
+                `;
+            } else {
+                visualMediaHTML = `
+                    <div class="portfolio-img ${p.bgClass || 'portfolio-bg-1'}">
+                        <span class="portfolio-tag">${(p.niche || 'WEBSITE').toUpperCase()}</span>
+                        <div class="portfolio-overlay">
+                            <button type="button" class="btn btn-sm btn-outline portfolio-detail-btn" data-title="${p.title}" data-desc="${p.desc}" data-niche="${p.niche}" data-demo-url="${p.demoUrl || ''}">
+                                <i class="fa-solid fa-eye"></i> Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            return `
+                <div class="portfolio-card" data-category="${p.category || 'landing'}">
+                    ${visualMediaHTML}
+                    <div class="portfolio-info">
+                        <h4>${p.title}</h4>
+                        <p>${p.desc}</p>
                     </div>
                 </div>
-                <div class="portfolio-info">
-                    <h4>${p.title}</h4>
-                    <p>${p.desc}</p>
-                </div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
     }
 
     // Render Pricing Packages
