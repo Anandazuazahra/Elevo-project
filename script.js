@@ -117,10 +117,15 @@ function renderCMSContent(data) {
                     <div class="portfolio-info">
                         <h4>${p.title}</h4>
                         <p>${p.desc}</p>
-                        <div class="portfolio-card-footer">
-                            <button type="button" class="btn btn-sm btn-outline portfolio-detail-btn" data-title="${p.title}" data-desc="${p.desc}" data-niche="${p.niche}" data-demo-url="${p.demoUrl || ''}">
-                                <i class="fa-solid fa-eye"></i> Lihat Detail & Demo
+                        <div class="portfolio-card-footer" style="display: flex; gap: 10px;">
+                            <button type="button" class="btn btn-sm btn-outline portfolio-detail-btn" data-title="${p.title}" data-desc="${p.desc}" data-niche="${p.niche}" data-demo-url="${p.demoUrl || ''}" style="flex: 1;">
+                                <i class="fa-solid fa-eye"></i> Detail
                             </button>
+                            ${(p.demoUrl && p.demoUrl.trim() !== '') ? `
+                            <a href="${p.demoUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" style="flex: 1; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 5px;">
+                                ${ytId ? '<i class="fa-brands fa-youtube"></i> Tonton' : '<i class="fa-solid fa-square-arrow-up-right"></i> Kunjungi'}
+                            </a>
+                            ` : ''}
                         </div>
                     </div>
                 </div>
