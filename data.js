@@ -94,7 +94,7 @@ const DEFAULT_ELEVO_DATA = {
             title: "Custom Web & Android App",
             subtitle: "Solusi sistem enterprise kustom untuk otomatisasi bisnis skala besar",
             popular: false,
-            oldPrice: "Mulai dari Rp.5000.000",
+            oldPrice: "",
             amount: "Didiskusikan",
             period: "Sesuai Kompleksitas Sistem",
             features: [

@@ -134,9 +134,9 @@ function renderCMSContent(data) {
                     <p>${pkg.subtitle}</p>
                 </div>
                 <div class="card-price">
-                    ${pkg.oldPrice ? `<span class="strikethrough">${pkg.oldPrice}</span>` : ''}
+                    ${(pkg.oldPrice && pkg.oldPrice.trim() !== '') ? `<span class="strikethrough">${pkg.oldPrice}</span>` : ''}
                     <div class="price-val">
-                        <span class="currency">Rp</span>
+                        ${isNaN(pkg.amount.replace(/\./g, '')) ? '' : '<span class="currency">Rp</span>'}
                         <span class="amount">${pkg.amount}</span>
                     </div>
                     <span class="period">${pkg.period}</span>
