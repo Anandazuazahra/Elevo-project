@@ -5,3 +5,5 @@ node_modules/
 .agents/
 .vercel
 .env*
+dist/
+
