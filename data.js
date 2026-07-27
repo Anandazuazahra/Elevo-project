@@ -61,7 +61,7 @@ const DEFAULT_ELEVO_DATA = {
             period: "Sekali bayar",
             features: [
                 "1 Halaman Focus Conversion",
-                "Gratis Domain & Hosting 1 bulan",
+                "Gratis Domain & Hosting 1 Bulan",
                 "Desain Ultra Responsive Mobile",
                 "Direct WhatsApp CTA Floating",
                 "Integrasi Google Analytics / Pixel",
