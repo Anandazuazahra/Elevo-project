@@ -46,7 +46,7 @@ const DEFAULT_ELEVO_DATA = {
             category: "custom",
             niche: "Cafe & Restoran",
             desc: "Sebuah sistem terintegrasi berbasis web dan Android yang menggabungkan kontrol akses berbasis peran (RBAC), notifikasi real-time melalui Kitchen Display System (KDS), serta visualisasi data pada dashboard admin. Rancangan ini menghadirkan alur operasional yang lebih terstruktur, transparan, dan mudah dipantau bagi pelaku usaha di bidang kuliner.",
-            demoUrl: "",
+            demoUrl: "https://youtu.be/T7GjxVxbBdY",
             bgClass: "portfolio-bg-5"
         }
     ],
