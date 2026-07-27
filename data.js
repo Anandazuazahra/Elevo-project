@@ -18,7 +18,7 @@ const DEFAULT_ELEVO_DATA = {
     stats: [
         { number: "50+", label: "Website Diselesaikan" },
         { number: "100%", label: "Klien Puas & Garansi" },
-        { number: "3-5 Hari", label: "Rata-rata Pengerjaan" },
+        { number: "2-4 Hari", label: "Rata-rata Pengerjaan" },
         { number: "24/7", label: "Support Konsultasi" }
     ],
     portfolio: [
@@ -110,7 +110,7 @@ const DEFAULT_ELEVO_DATA = {
         {
             id: "faq-1",
             question: "Berapa lama proses pembuatan websitenya?",
-            answer: "Untuk Paket Landing Page Promo, pengerjaan normal memakan waktu 3 sampai 5 hari kerja setelah bahan/konten lengkap kami terima."
+            answer: "Untuk Paket Landing Page Promo, pengerjaan normal memakan waktu 2 sampai 4 hari kerja setelah bahan/konten lengkap kami terima."
         },
         {
             id: "faq-2",
