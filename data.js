@@ -95,7 +95,7 @@ const DEFAULT_ELEVO_DATA = {
             subtitle: "Solusi sistem enterprise kustom untuk otomatisasi bisnis skala besar",
             popular: false,
             oldPrice: "",
-            amount: "Didiskusikan",
+            amount: "Harga Didiskusikan",
             period: "Sesuai Kompleksitas Sistem",
             features: [
                 "Fitur & Modul Disesuaikan Kebutuhan Bisnis",
