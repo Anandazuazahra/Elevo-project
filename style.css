@@ -934,6 +934,17 @@ h6 {
     background-size: cover;
 }
 
+.portfolio-video-wrapper {
+    height: 190px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background: #000;
+    border: 1px solid var(--border-glow);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
 .portfolio-tag {
     background: rgba(6, 11, 30, 0.85);
     border: 1px solid var(--border-glow);
