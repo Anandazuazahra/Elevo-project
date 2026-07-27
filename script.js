@@ -162,8 +162,8 @@ function renderCMSContent(data) {
     const faqAccordion = document.querySelector('.faq-accordion');
     if (faqAccordion && faq && faq.length > 0) {
         faqAccordion.innerHTML = faq.map((item, idx) => `
-            <div class="faq-item ${idx === 0 ? 'active' : ''}">
-                <button type="button" class="faq-question" aria-expanded="${idx === 0 ? 'true' : 'false'}">
+            <div class="faq-item active">
+                <button type="button" class="faq-question" aria-expanded="true">
                     <span>${item.question}</span>
                     <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                 </button>
