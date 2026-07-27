@@ -992,6 +992,17 @@ h6 {
     color: var(--text-secondary);
 }
 
+.portfolio-card-footer {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.portfolio-card-footer .btn {
+    width: 100%;
+    justify-content: center;
+}
+
 /* Modal Styling */
 .modal {
     position: fixed;

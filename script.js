@@ -117,6 +117,11 @@ function renderCMSContent(data) {
                     <div class="portfolio-info">
                         <h4>${p.title}</h4>
                         <p>${p.desc}</p>
+                        <div class="portfolio-card-footer">
+                            <button type="button" class="btn btn-sm btn-outline portfolio-detail-btn" data-title="${p.title}" data-desc="${p.desc}" data-niche="${p.niche}" data-demo-url="${p.demoUrl || ''}">
+                                <i class="fa-solid fa-eye"></i> Lihat Detail & Demo
+                            </button>
+                        </div>
                     </div>
                 </div>
             `;
@@ -251,6 +256,12 @@ function setupPortfolioModal() {
                 if (demoUrl && demoUrl.trim() !== '') {
                     modalDemoBtn.href = demoUrl;
                     modalDemoBtn.style.display = 'inline-flex';
+                    const testYtId = getYouTubeId(demoUrl);
+                    if (testYtId) {
+                        modalDemoBtn.innerHTML = '<i class="fa-brands fa-youtube"></i> Tonton Demo Video';
+                    } else {
+                        modalDemoBtn.innerHTML = '<i class="fa-solid fa-square-arrow-up-right"></i> Kunjungi Website Demo';
+                    }
                 } else {
                     modalDemoBtn.style.display = 'none';
                 }
