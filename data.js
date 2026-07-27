@@ -32,6 +32,24 @@ const DEFAULT_ELEVO_DATA = {
             bgClass: "portfolio-bg-1"
         },
         {
+            id: "port-2",
+            title: "Nusantara Construction",
+            category: "company",
+            niche: "Properti & Konstruksi",
+            desc: "Company Profile profesional untuk perusahaan kontraktor & properti lengkap dengan galeri proyek dan form penawaran.",
+            demoUrl: "",
+            bgClass: "portfolio-bg-2"
+        },
+        {
+            id: "port-3",
+            title: "Hijab & Fashion Store",
+            category: "ecom",
+            niche: "Fashion & Retail",
+            desc: "Toko online katalog busana muslimah dengan fitur direct checkout WhatsApp dan manajemen produk.",
+            demoUrl: "",
+            bgClass: "portfolio-bg-3"
+        },
+        {
             id: "port-4",
             title: "Dealer Motor Motoverse",
             category: "landing",
@@ -42,11 +60,11 @@ const DEFAULT_ELEVO_DATA = {
         },
         {
             id: "port-5",
-            title: "Kasir POS / Custom Web App",
+            title: "Custom Web App / Dashboard",
             category: "custom",
-            niche: "SaaS & Kasir POS",
+            niche: "SaaS & Dashboard",
             desc: "Sebuah sistem terintegrasi berbasis web dan Android yang menggabungkan kontrol akses berbasis peran (RBAC), notifikasi real-time melalui Kitchen Display System (KDS), serta visualisasi data pada dashboard admin. Rancangan ini menghadirkan alur operasional yang lebih terstruktur, transparan, dan mudah dipantau bagi pelaku usaha di bidang kuliner.",
-            demoUrl: "https://youtu.be/T7GjxVxbBdY",
+            demoUrl: "",
             bgClass: "portfolio-bg-5"
         }
     ],
@@ -58,14 +76,14 @@ const DEFAULT_ELEVO_DATA = {
             popular: true,
             oldPrice: "Rp 1.200.000",
             amount: "1.000.000",
-            period: "Sekali bayar / 1 Tahun",
+            period: "Sekali bayar",
             features: [
                 "1 Halaman Focus Conversion",
-                "Gratis Domain & Hosting 1 Thn",
+                "Gratis Domain & Hosting 1 bulan",
                 "Desain Ultra Responsive Mobile",
                 "Direct WhatsApp CTA Floating",
                 "Integrasi Google Analytics / Pixel",
-                "Pengerjaan 3-5 Hari Kerja",
+                "Pengerjaan 2-4 Hari Kerja",
                 "Gratis Revisi 2x"
             ],
             btnText: "Ambil Promo Rp 1 Juta"
@@ -77,7 +95,7 @@ const DEFAULT_ELEVO_DATA = {
             popular: false,
             oldPrice: "Rp 1.800.000",
             amount: "1.500.000",
-            period: "Sekali bayar / 1 Tahun",
+            period: "Sekali bayar",
             features: [
                 "Hingga 5-7 Halaman Menu",
                 "Gratis Domain (.com) & Hosting",
@@ -94,17 +112,11 @@ const DEFAULT_ELEVO_DATA = {
             title: "Custom Web & Android App",
             subtitle: "Solusi sistem enterprise kustom untuk otomatisasi bisnis skala besar",
             popular: false,
-            oldPrice: "Mulai dari",
-            amount: "4.999.000",
+            oldPrice: "Mulai dari Rp.5000.000",
+            amount: "Didiskusikan",
             period: "Sesuai Kompleksitas Sistem",
             features: [
-                "Web App & Aplikasi Android Terintegrasi",
-                "Multi-Role System & Keamanan RBAC Ketat",
-                "Notifikasi Real-time Up-to-date (WebSockets)",
-                "Interactive Dashboard & Data Analytics",
-                "Integrasi API & Database Handal",
-                "UI/UX Premium & Responsive Modern",
-                "Dukungan Maintenance & Pemeliharaan"
+                "Sesuai Permintaan"
             ],
             btnText: "Konsultasi Sistem Kustom"
         }
@@ -146,21 +158,6 @@ function getElevoData() {
                 data.portfolio = [...DEFAULT_ELEVO_DATA.portfolio];
                 updated = true;
             } else {
-                const defaultIds = DEFAULT_ELEVO_DATA.portfolio.map(p => p.id);
-                const allKnownDefaults = ['port-1', 'port-2', 'port-3', 'port-4', 'port-5'];
-                
-                // Filter out default items that are no longer in DEFAULT_ELEVO_DATA
-                const originalLength = data.portfolio.length;
-                data.portfolio = data.portfolio.filter(p => {
-                    if (allKnownDefaults.includes(p.id)) {
-                        return defaultIds.includes(p.id);
-                    }
-                    return true;
-                });
-                if (data.portfolio.length !== originalLength) {
-                    updated = true;
-                }
-
                 DEFAULT_ELEVO_DATA.portfolio.forEach(defaultItem => {
                     const existingIdx = data.portfolio.findIndex(p => p.id === defaultItem.id);
                     if (existingIdx === -1) {
