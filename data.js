@@ -32,24 +32,6 @@ const DEFAULT_ELEVO_DATA = {
             bgClass: "portfolio-bg-1"
         },
         {
-            id: "port-2",
-            title: "Nusantara Construction",
-            category: "company",
-            niche: "Properti & Konstruksi",
-            desc: "Company Profile profesional untuk perusahaan kontraktor & properti lengkap dengan galeri proyek dan form penawaran.",
-            demoUrl: "",
-            bgClass: "portfolio-bg-2"
-        },
-        {
-            id: "port-3",
-            title: "Hijab & Fashion Store",
-            category: "ecom",
-            niche: "Fashion & Retail",
-            desc: "Toko online katalog busana muslimah dengan fitur direct checkout WhatsApp dan manajemen produk.",
-            demoUrl: "",
-            bgClass: "portfolio-bg-3"
-        },
-        {
             id: "port-4",
             title: "Dealer Motor Motoverse",
             category: "landing",
@@ -60,9 +42,9 @@ const DEFAULT_ELEVO_DATA = {
         },
         {
             id: "port-5",
-            title: "Custom Web App / Dashboard",
+            title: "Custom Web App / Kasir POS",
             category: "custom",
-            niche: "SaaS & Dashboard",
+            niche: "Cafe & Restoran",
             desc: "Sebuah sistem terintegrasi berbasis web dan Android yang menggabungkan kontrol akses berbasis peran (RBAC), notifikasi real-time melalui Kitchen Display System (KDS), serta visualisasi data pada dashboard admin. Rancangan ini menghadirkan alur operasional yang lebih terstruktur, transparan, dan mudah dipantau bagi pelaku usaha di bidang kuliner.",
             demoUrl: "",
             bgClass: "portfolio-bg-5"
@@ -116,7 +98,10 @@ const DEFAULT_ELEVO_DATA = {
             amount: "Didiskusikan",
             period: "Sesuai Kompleksitas Sistem",
             features: [
-                "Sesuai Permintaan"
+                "Fitur & Modul Disesuaikan Kebutuhan Bisnis",
+                "Free Konsultasi & Analisis Kebutuhan Sistem",
+                "Skema Support & Maintenance Fleksibel"
+
             ],
             btnText: "Konsultasi Sistem Kustom"
         }

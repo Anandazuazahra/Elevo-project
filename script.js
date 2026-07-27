@@ -177,6 +177,13 @@ function setupPortfolioFilters() {
     });
 }
 
+function getYouTubeId(url) {
+    if (!url) return null;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+}
+
 function setupPortfolioModal() {
     const modal = document.getElementById('portfolioModal');
     const modalTitle = document.getElementById('modalTitle');
@@ -184,9 +191,21 @@ function setupPortfolioModal() {
     const modalNiche = document.getElementById('modalNiche');
     const modalWaBtn = document.getElementById('modalWaBtn');
     const modalClose = document.getElementById('modalClose');
+    const modalVideoContainer = document.getElementById('modalVideoContainer');
 
     const cmsData = getElevoData();
     const waNum = (cmsData.general && cmsData.general.whatsappNumber) ? cmsData.general.whatsappNumber : "62895634887437";
+
+    function closeModal() {
+        if (modal) {
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+        }
+        if (modalVideoContainer) {
+            modalVideoContainer.innerHTML = '';
+            modalVideoContainer.style.display = 'none';
+        }
+    }
 
     document.addEventListener('click', (e) => {
         const btn = e.target.closest('.portfolio-detail-btn');
@@ -214,6 +233,26 @@ function setupPortfolioModal() {
                 }
             }
 
+            const ytId = getYouTubeId(demoUrl);
+            if (modalVideoContainer) {
+                if (ytId) {
+                    modalVideoContainer.innerHTML = `
+                        <iframe width="420" height="315" 
+                            src="https://www.youtube.com/embed/${ytId}" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen 
+                            style="border-radius: 8px; max-width: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                        </iframe>
+                    `;
+                    modalVideoContainer.style.display = 'flex';
+                } else {
+                    modalVideoContainer.innerHTML = '';
+                    modalVideoContainer.style.display = 'none';
+                }
+            }
+
             if (modal) {
                 modal.classList.add('active');
                 modal.setAttribute('aria-hidden', 'false');
@@ -222,18 +261,12 @@ function setupPortfolioModal() {
     });
 
     if (modalClose) {
-        modalClose.addEventListener('click', () => {
-            if (modal) {
-                modal.classList.remove('active');
-                modal.setAttribute('aria-hidden', 'true');
-            }
-        });
+        modalClose.addEventListener('click', closeModal);
     }
 
     window.addEventListener('click', (e) => {
         if (e.target === modal) {
-            modal.classList.remove('active');
-            modal.setAttribute('aria-hidden', 'true');
+            closeModal();
         }
     });
 }
