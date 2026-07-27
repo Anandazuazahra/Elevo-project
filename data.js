@@ -235,3 +235,8 @@ function resetElevoData() {
         return false;
     }
 }
+
+// Export to global window scope for compatibility when loaded as ES Module
+window.getElevoData = getElevoData;
+window.saveElevoData = saveElevoData;
+window.resetElevoData = resetElevoData;
