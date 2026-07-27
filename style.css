@@ -910,27 +910,27 @@ h6 {
 }
 
 .portfolio-bg-1 {
-    background: linear-gradient(rgba(30, 27, 24, 0.45), rgba(74, 59, 50, 0.65)), url('assets/warkop_preview.png') no-repeat center center;
+    background: url('assets/warkop_preview.png') no-repeat center center;
     background-size: cover;
 }
 
 .portfolio-bg-2 {
-    background: linear-gradient(rgba(15, 32, 39, 0.45), rgba(44, 83, 100, 0.65)), url('assets/construction_preview.png') no-repeat center center;
+    background: url('assets/construction_preview.png') no-repeat center center;
     background-size: cover;
 }
 
 .portfolio-bg-3 {
-    background: linear-gradient(rgba(45, 17, 43, 0.45), rgba(97, 29, 86, 0.65)), url('assets/fashion_preview.png') no-repeat center center;
+    background: url('assets/fashion_preview.png') no-repeat center center;
     background-size: cover;
 }
 
 .portfolio-bg-4 {
-    background: linear-gradient(rgba(15, 23, 42, 0.45), rgba(30, 41, 59, 0.65)), url('assets/honda_preview.png') no-repeat center center;
+    background: url('assets/honda_preview.png') no-repeat center center;
     background-size: cover;
 }
 
 .portfolio-bg-5 {
-    background: linear-gradient(rgba(6, 11, 30, 0.15), rgba(6, 11, 30, 0.35)), url('assets/custom_preview.png') no-repeat center center;
+    background: url('assets/custom_preview.png') no-repeat center center;
     background-size: cover;
 }
 
