@@ -893,6 +893,9 @@ h6 {
     border-radius: var(--radius-md);
     overflow: hidden;
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .portfolio-card:hover {
@@ -979,6 +982,9 @@ h6 {
 
 .portfolio-info {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .portfolio-info h4 {
@@ -993,7 +999,8 @@ h6 {
 }
 
 .portfolio-card-footer {
-    margin-top: 15px;
+    margin-top: auto;
+    padding-top: 15px;
     display: flex;
     justify-content: flex-start;
 }
