@@ -89,7 +89,7 @@ function renderCMSContent(data) {
             if (ytId) {
                 visualMediaHTML = `
                     <div class="portfolio-video-wrapper" style="position: relative; width: 100%; padding-bottom: 75%; height: 0; overflow: hidden; border-radius: var(--radius-md); background: #000; border: 1px solid var(--border-glow); box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-                        <iframe src="https://www.youtube.com/embed/${ytId}" 
+                        <iframe src="https://www.youtube.com/embed/${ytId}?autoplay=1&mute=1&loop=1&playlist=${ytId}" 
                             title="${p.title}" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
