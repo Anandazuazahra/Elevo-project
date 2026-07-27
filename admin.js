@@ -237,7 +237,7 @@ function renderPortfolioTable(data) {
     tbody.innerHTML = items.map(p => `
         <tr>
             <td><strong>${p.title}</strong></td>
-            <td><span class="modal-tag-pill">${p.category}</span></td>
+            <td><span class="modal-tag-pill">${p.category === 'landing' ? 'Landing Page' : p.category === 'company' ? 'Company Profile' : p.category === 'ecom' ? 'Toko Online' : p.category === 'custom' ? 'Custom Web' : p.category}</span></td>
             <td>${p.niche}</td>
             <td>
                 <div class="action-btns">

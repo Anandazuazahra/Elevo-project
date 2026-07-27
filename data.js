@@ -48,6 +48,24 @@ const DEFAULT_ELEVO_DATA = {
             desc: "Toko online katalog busana muslimah dengan fitur direct checkout WhatsApp dan manajemen produk.",
             demoUrl: "",
             bgClass: "portfolio-bg-3"
+        },
+        {
+            id: "port-4",
+            title: "Dealer Motor Motoverse",
+            category: "landing",
+            niche: "Otomotif & Motor",
+            desc: "Landing page penjualan motor Honda Motoverse dengan integrasi brosur digital, simulasi kredit, dan direct chat WhatsApp.",
+            demoUrl: "https://katalog-honda.vercel.app",
+            bgClass: "portfolio-bg-4"
+        },
+        {
+            id: "port-5",
+            title: "Kasir POS / Custom Web App",
+            category: "custom",
+            niche: "SaaS & Kasir POS",
+            desc: "Sebuah sistem terintegrasi berbasis web dan Android yang menggabungkan kontrol akses berbasis peran (RBAC), notifikasi real-time melalui Kitchen Display System (KDS), serta visualisasi data pada dashboard admin. Rancangan ini menghadirkan alur operasional yang lebih terstruktur, transparan, dan mudah dipantau bagi pelaku usaha di bidang kuliner.",
+            demoUrl: "https://youtu.be/T7GjxVxbBdY",
+            bgClass: "portfolio-bg-5"
         }
     ],
     pricing: [
@@ -91,22 +109,22 @@ const DEFAULT_ELEVO_DATA = {
         },
         {
             id: "price-3",
-            title: "Toko Online / Custom",
-            subtitle: "Cocok untuk penjualan produk katalog & e-commerce",
+            title: "Custom Web & Android App",
+            subtitle: "Solusi sistem enterprise kustom untuk otomatisasi bisnis skala besar",
             popular: false,
-            oldPrice: "Rp 2.800.000",
-            amount: "2.300.000",
-            period: "Sekali bayar / 1 Tahun",
+            oldPrice: "Mulai dari",
+            amount: "4.999.000",
+            period: "Sesuai Kompleksitas Sistem",
             features: [
-                "Sistem Katalog Produk & Cart",
-                "Checkout Otomatis via WA/Payment",
-                "Gratis Domain & Server Cepat",
-                "Halaman Admin Manajemen Produk",
-                "Hitung Ongkir Auto Integrasi",
-                "Panduan Kelola Web (Panduan)",
-                "Support Pendampingan"
+                "Web App & Aplikasi Android Terintegrasi",
+                "Multi-Role System & Keamanan RBAC Ketat",
+                "Notifikasi Real-time Up-to-date (WebSockets)",
+                "Interactive Dashboard & Data Analytics",
+                "Integrasi API & Database Handal",
+                "UI/UX Premium & Responsive Modern",
+                "Dukungan Maintenance & Pemeliharaan"
             ],
-            btnText: "Konsultasi Custom"
+            btnText: "Konsultasi Sistem Kustom"
         }
     ],
     faq: [
@@ -138,7 +156,66 @@ function getElevoData() {
     try {
         const stored = localStorage.getItem('elevo_studioo_cms_data');
         if (stored) {
-            return JSON.parse(stored);
+            const data = JSON.parse(stored);
+            let updated = false;
+
+            // Sync portfolio items
+            if (!data.portfolio) {
+                data.portfolio = [...DEFAULT_ELEVO_DATA.portfolio];
+                updated = true;
+            } else {
+                DEFAULT_ELEVO_DATA.portfolio.forEach(defaultItem => {
+                    const existingIdx = data.portfolio.findIndex(p => p.id === defaultItem.id);
+                    if (existingIdx === -1) {
+                        data.portfolio.push(defaultItem);
+                        updated = true;
+                    } else {
+                        const existing = data.portfolio[existingIdx];
+                        if (
+                            existing.bgClass !== defaultItem.bgClass ||
+                            existing.desc !== defaultItem.desc ||
+                            existing.category !== defaultItem.category ||
+                            existing.niche !== defaultItem.niche ||
+                            existing.title !== defaultItem.title ||
+                            existing.demoUrl !== defaultItem.demoUrl
+                        ) {
+                            data.portfolio[existingIdx] = { ...existing, ...defaultItem };
+                            updated = true;
+                        }
+                    }
+                });
+            }
+
+            // Sync pricing packages
+            if (!data.pricing) {
+                data.pricing = [...DEFAULT_ELEVO_DATA.pricing];
+                updated = true;
+            } else {
+                DEFAULT_ELEVO_DATA.pricing.forEach(defaultPkg => {
+                    const existingIdx = data.pricing.findIndex(p => p.id === defaultPkg.id);
+                    if (existingIdx === -1) {
+                        data.pricing.push(defaultPkg);
+                        updated = true;
+                    } else {
+                        const existing = data.pricing[existingIdx];
+                        if (
+                            existing.title !== defaultPkg.title ||
+                            existing.subtitle !== defaultPkg.subtitle ||
+                            existing.amount !== defaultPkg.amount ||
+                            existing.oldPrice !== defaultPkg.oldPrice ||
+                            JSON.stringify(existing.features) !== JSON.stringify(defaultPkg.features)
+                        ) {
+                            data.pricing[existingIdx] = { ...existing, ...defaultPkg };
+                            updated = true;
+                        }
+                    }
+                });
+            }
+
+            if (updated) {
+                saveElevoData(data);
+            }
+            return data;
         }
     } catch (e) {
         console.error("Error reading from localStorage:", e);
