@@ -309,22 +309,17 @@ function setupPortfolioModal() {
 
 function setupFAQAccordion() {
     const questions = document.querySelectorAll('.faq-question');
-    console.log("setupFAQAccordion: Found questions:", questions.length);
     questions.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            console.log("setupFAQAccordion: Question button clicked!", btn);
+        btn.addEventListener('click', () => {
             const item = btn.closest('.faq-item');
             if (item) {
                 const isActive = item.classList.contains('active');
-                console.log("setupFAQAccordion: Current active state:", isActive);
                 if (isActive) {
                     item.classList.remove('active');
                     btn.setAttribute('aria-expanded', 'false');
-                    console.log("setupFAQAccordion: Removed active class");
                 } else {
                     item.classList.add('active');
                     btn.setAttribute('aria-expanded', 'true');
-                    console.log("setupFAQAccordion: Added active class");
                 }
             }
         });
