@@ -612,7 +612,7 @@ h6 {
 .mobile-frame {
     position: absolute;
     bottom: -20px;
-    left: -15px;
+    right: -15px;
     width: 140px;
     background: #0F172A;
     border: 3px solid #334155;
